@@ -1,0 +1,6 @@
+.actions {
+  display: none;
+}
+.listitem:hover .actions {
+  display: block;
+}

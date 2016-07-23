@@ -35,6 +35,21 @@ if (isDeveloping) {
   });
 }
 
+app.get('application.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'app/css/application.css'));
+  res.end();
+});
+
+app.get('/data.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.write(JSON.stringify([{id: 1, date: '04-01', fromTime: '08:00', toTime: '16:00'},
+    {id: 2, date: '04-01', fromTime: '08:00', toTime: '16:00'},
+    {id: 3, date: '04-01', fromTime: '08:00', toTime: '16:00'},
+    {id: 4, date: '04-01', fromTime: '08:00', toTime: '16:00', note: 'almost last'},
+    {id: 5, date: '04-01', fromTime: '08:00', toTime: '16:00'}]));
+  res.end();
+});
+
 app.get('*', (req, res) => {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.write('404 Not Found');
